@@ -19,15 +19,15 @@
  * 
  */
 
-#ifndef MTE_DIAMOND_SQUARE_HPP
-#define MTE_DIAMOND_SQUARE_HPP
+#ifndef WTF_DIAMOND_SQUARE_HPP
+#define WTF_DIAMOND_SQUARE_HPP
 
 #include <vector>
 #include <ctime>
 #include <cmath>
 #include <cassert>
 
-namespace mte {
+namespace wtf {
 
 //  Define a container for storing height maps
 typedef std::vector<double> height_map;
