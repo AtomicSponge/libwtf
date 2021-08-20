@@ -1,4 +1,4 @@
-## libwtf ~ C++ Code Snippets
+## libwtf ~ Custom C++ Library
 
 Collection of C++ code snippets, details of each file below.
 
