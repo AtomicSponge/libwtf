@@ -206,7 +206,7 @@ class diamond_square {
         height_map hmap;         //  Store the height map (vector of long doubles)
         std::size_t map_side;    //  Used for width and height of the map
         long double map_offset;  //  Store the map's offset
-        uint32_t map_seed;        //  Seed used for random
+        uint32_t map_seed;       //  Seed used for random
 };
 
 }  //  end namespace mte
