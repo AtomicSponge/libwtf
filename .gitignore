@@ -1,4 +1,4 @@
-_bak/
+*_bak/
 docs/
 wip/
 *.code-workspace

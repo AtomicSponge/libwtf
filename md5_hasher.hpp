@@ -2,7 +2,7 @@
  * MD5 Hasher
  * By:  Matthew Evans
  * File:  md5_hasher.hpp
- * Version:  091420
+ * Version:  082521
  *
  * See LICENSE.md for copyright information.
  * 
@@ -66,10 +66,15 @@ typedef std::uint32_t md5_block;
     (a) = left_rotate ((a), (s)); \
     (a) += (b); }
 
+/*!
+ * \class md5_hasher
+ * \brief Calculate md5 hash value.
+ */
 class md5_hasher {
     public:
-        /*
-         * Return the calculated hash as a string
+        /*!
+         * \brief Return the calculated hash as a string
+         * \return
          */
         inline const std::string get_hash(void) {
             std::ostringstream oss;
