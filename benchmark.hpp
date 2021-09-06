@@ -32,8 +32,8 @@ namespace wtf {
 
 /*!
  * \class benchmark
- * \brief
- * \tparam T 
+ * \brief Run a benchmark 
+ * \tparam T See https://en.cppreference.com/w/cpp/chrono/duration
  */
 template <typename T>
 class benchmark {
@@ -47,6 +47,7 @@ class benchmark {
 
         /*!
          * \brief Stop benchmark and log to file.
+         * Logs all benchmarks to: benchmark\log.txt
          */
         inline void stop(void) {
             end_bench = std::chrono::system_clock::now();

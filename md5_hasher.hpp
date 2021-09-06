@@ -74,7 +74,7 @@ class md5_hasher {
     public:
         /*!
          * \brief Return the calculated hash as a string
-         * \return
+         * \return MD5 hash value
          */
         inline const std::string get_hash(void) {
             std::ostringstream oss;
