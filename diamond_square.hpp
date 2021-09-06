@@ -47,7 +47,7 @@ class diamond_square {
         inline diamond_square(
             const std::size_t& size,
             const long double& offset,
-            const uint64_t& seed
+            const uint32_t& seed
         ) : map_offset(offset), map_seed(seed), map_side(0) {
             initialize(size);
         };
@@ -94,7 +94,7 @@ class diamond_square {
          * \brief Get seed for the map.
          * \return Map's seed value.
          */
-        inline const uint64_t get_seed(void) const {
+        inline const uint32_t get_seed(void) const {
             return map_seed;
         };
 
@@ -206,7 +206,7 @@ class diamond_square {
         height_map hmap;         //  Store the height map (vector of long doubles)
         std::size_t map_side;    //  Used for width and height of the map
         long double map_offset;  //  Store the map's offset
-        uint64_t map_seed;        //  Seed used for random
+        uint32_t map_seed;        //  Seed used for random
 };
 
 }  //  end namespace mte

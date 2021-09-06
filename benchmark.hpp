@@ -57,7 +57,7 @@ class benchmark {
 
             bench_mtx.lock();  //  Lock so multiple threads don't write at once.
             std::ofstream benchmark_log;
-            benchmark_log.open("benchmark\\log.txt", std::ios::app);
+            benchmark_log.open("benchmark/log.txt", std::ios::app);
             benchmark_log << "Benchmark:  " << benchmark_label << std::endl;
             benchmark_log << "Started at:  " << std::ctime(&start_time);
             benchmark_log << "Completed at:  " << std::ctime(&end_time);
