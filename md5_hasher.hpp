@@ -86,8 +86,8 @@ class md5_hasher {
             return oss.str();
         };
 
-        /*
-         * Call this first to set up the states
+        /*!
+         * \brief Call this first to set up the states
          */
         inline void initialize(void) {
             counter[0] = counter[1] = (md5_block)0;
@@ -98,8 +98,10 @@ class md5_hasher {
             buffer[3] = (md5_block)0x10325476;
         };
 
-        /*
-         * Take a block of data and process its hash
+        /*!
+         * \brief Take a block of data and process its hash
+         * \param hash_me Data to hash
+         * \param len Length of data buffer
          */
         inline void update(const unsigned char* hash_me, std::size_t len) {
             md5_block input[16];
@@ -132,8 +134,8 @@ class md5_hasher {
             }
         };
 
-        /*
-         * Finalize MD5 hash and write the digest
+        /*!
+         * \brief Finalize MD5 hash and write the digest
          */
         inline void finalize(void) {
             md5_block input[16];
