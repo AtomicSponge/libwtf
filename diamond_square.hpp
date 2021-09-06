@@ -44,7 +44,7 @@ class diamond_square {
          * \param offset Offset value - higher value for more even terrain
          * \param seed Seed for random
          */
-        diamond_square(
+        inline diamond_square(
             const std::size_t& size,
             const long double& offset,
             const uint_64& seed
@@ -57,27 +57,27 @@ class diamond_square {
          * \param size Size value to generate map with (2 - 14)
          * \param offset Offset value - higher value for more even terrain
          */
-        diamond_square(
+        inline diamond_square(
             const std::size_t& size,
             const long double& offset
         ) : map_offset(offset), map_seed(std::time(nullptr)), map_side(0) {
             initialize(size);
         };
 
-        ~diamond_square() = default;
+        inline ~diamond_square() = default;
 
         /*!
          * \brief Get the height map vector.
          * \return The height map.
          */
-        const height_map get_map(void) const { return hmap; };
+        inline const height_map get_map(void) const { return hmap; };
 
         /*!
          * \brief Get a single value in the height map.
          * \param pos Position to get value for.
          * \return Map value at position.
          */
-        const long double get_value(const std::size_t& pos) const {
+        inline const long double get_value(const std::size_t& pos) const {
             assert(pos < hmap.size());
             return hmap[pos];
         };
@@ -86,7 +86,7 @@ class diamond_square {
          * \brief Get width of the map.
          * \return Width of the map.
          */
-        const std::size_t get_side(void) const {
+        inline const std::size_t get_side(void) const {
             return map_side;
         };
 
@@ -94,7 +94,7 @@ class diamond_square {
          * \brief Get seed for the map.
          * \return Map's seed value.
          */
-        const uint_64 get_seed(void) const {
+        inline const uint_64 get_seed(void) const {
             return map_seed;
         };
 
@@ -102,7 +102,7 @@ class diamond_square {
          * \brief Build the height map using the power of diamond square!
          * Call this after declaring the object to build the actual map.
          */
-        void build_map(void) {
+        inline void build_map(void) {
             std::srand(map_seed);  //  Set seed.
 
             //  Set the initial values in the four corners of the map.
@@ -168,7 +168,7 @@ class diamond_square {
          * Verifies the passed size value is within range.
          * Define the height map as map_side * map_side
          */
-        void initialize(const std::size_t& size) {
+        inline void initialize(const std::size_t& size) {
             if(size < min_size) size = min_size;
             if(size > max_size) size = max_size;
             map_side = pow(2, size) + 1;
@@ -200,8 +200,8 @@ class diamond_square {
          * Minimum and maximum size of the map.
          * The map side is calculated:  (2 ^ size) + 1
          */
-        const std::size_t min_size = 2;
-        const std::size_t max_size = 14;
+        inline const std::size_t min_size = 2;
+        inline const std::size_t max_size = 14;
 
         height_map hmap;         //  Store the height map (vector of long doubles)
         std::size_t map_side;    //  Used for width and height of the map
