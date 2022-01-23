@@ -42,7 +42,7 @@ class benchmark {
         /*!
          * \brief General initialization, see specializations below.
          */
-        inline benchmark(
+        benchmark(
             const std::string& label
         ) : benchmark_label(label), time_label("units") {};
 

@@ -2,7 +2,7 @@
  * Height Map Generator using Diamond Square
  * By:  Matthew Evans
  * File:  diamond_square.hpp
- * Version:  TESTING
+ * Version:  012322 (WIP)
  *
  * See LICENSE.md for copyright information.
  *
@@ -33,7 +33,7 @@
 #include <vector>
 #include <ctime>
 #include <cmath>
-#include <exception>
+#include <stdexcept>
 
 namespace wtf {
 
@@ -82,13 +82,13 @@ class diamond_square {
          * \brief Get the height map vector.
          * \return The height map.
          */
-        const height_map operator*() const { return hmap; };
+        const height_map<T> operator*() const { return hmap; };
 
         /*!
          * \brief Get the height map vector.
          * \return The height map.
          */
-        const height_map get_map(void) const { return hmap; };
+        const height_map<T> get_map(void) const { return hmap; };
 
         /*!
          * \brief Get a single value in the height map.
@@ -215,7 +215,7 @@ class diamond_square {
             hmap[(((y + _map_side) % _map_side) * _map_side) + ((x + _map_side) % _map_side)] = new_value;
         };
 
-        height_map hmap;           //  Store the height map (vector of Ts)
+        height_map<T> hmap;           //  Store the height map (vector of Ts)
         std::size_t _map_side;     //  Used for width and height of the map
         const T map_offset;        //  Store the map's offset
         const uint32_t _map_seed;  //  Seed used for random
