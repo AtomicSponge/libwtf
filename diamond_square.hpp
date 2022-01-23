@@ -108,9 +108,9 @@ class diamond_square {
         };
 
         //!  ...
-        static const std::size_t min_size = WTF_DS_MIN_SIZE;
+        static const std::size_t min_size = static_cast<std::size_t>(WTF_DS_MIN_SIZE);
         //!  ...
-        static const std::size_t max_size = WTF_DS_MAX_SIZE;
+        static const std::size_t max_size = static_cast<std::size_t>(WTF_DS_MAX_SIZE);
         //!  ...
         const std::size_t& map_side = _map_side;
         //!  ...
@@ -187,7 +187,11 @@ class diamond_square {
          * Define the height map as _map_side * _map_side
          */
         void initialize(std::size_t size) {
-            static_assert(std::is_same_v<T, double> || std::is_same_v<T, long double>, "Diamond Square Type must be double or long double");
+            static_assert(
+                std::is_same_v<T, float> ||
+                std::is_same_v<T, double> ||
+                std::is_same_v<T, long double>,
+                "Diamond Square Type must be double or long double");
             if(size < min_size) size = min_size;
             if(size > max_size) size = max_size;
             _map_side = pow(2, size) + 1;
