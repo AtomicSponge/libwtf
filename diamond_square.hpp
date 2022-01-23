@@ -108,9 +108,9 @@ class diamond_square {
         };
 
         //!  ...
-        static const std::size_t min_size = static_cast<std::size_t>(WTF_DS_MIN_SIZE);
+        inline static const std::size_t min_size = static_cast<std::size_t>(WTF_DS_MIN_SIZE);
         //!  ...
-        static const std::size_t max_size = static_cast<std::size_t>(WTF_DS_MAX_SIZE);
+        inline static const std::size_t max_size = static_cast<std::size_t>(WTF_DS_MAX_SIZE);
         //!  ...
         const std::size_t& map_side = _map_side;
         //!  ...
@@ -219,7 +219,7 @@ class diamond_square {
             hmap[(((y + map_side) % map_side) * map_side) + ((x + map_side) % map_side)] = new_value;
         };
 
-        height_map<T> hmap;           //  Store the height map (vector of Ts)
+        height_map<T> hmap;        //  Store the height map (vector of Ts)
         std::size_t _map_side;     //  Used for width and height of the map
         const T map_offset;        //  Store the map's offset
         const uint32_t _map_seed;  //  Seed used for random

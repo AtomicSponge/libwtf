@@ -81,7 +81,7 @@ class benchmark {
         };
 
     private:
-        static std::mutex bench_mtx;        //  Thread safety for logging
+        std::mutex bench_mtx;               //  Thread safety for logging
         const std::string benchmark_label;  //  Name of benchmark
         const std::string time_label;       //  Duration type for logging
         //  Start / end points for benchmark:
@@ -97,37 +97,37 @@ class benchmark {
  * \brief Benchmark in nanoseconds.
  */
 template <> inline benchmark<std::chrono::nanoseconds>::benchmark(const std::string& label) :
-benchmark_label(label), time_label("nanoseconds") {}
+benchmark_label(label), time_label("nanoseconds") {};
 
 /*!
  * \brief Benchmark in microseconds.
  */
 template <> inline benchmark<std::chrono::microseconds>::benchmark(const std::string& label) :
-benchmark_label(label), time_label("microseconds") {}
+benchmark_label(label), time_label("microseconds") {};
 
 /*!
  * \brief Benchmark in milliseconds.
  */
 template <> inline benchmark<std::chrono::milliseconds>::benchmark(const std::string& label) :
-benchmark_label(label), time_label("milliseconds") {}
+benchmark_label(label), time_label("milliseconds") {};
 
 /*!
  * \brief Benchmark in seconds.
  */
 template <> inline benchmark<std::chrono::seconds>::benchmark(const std::string& label) :
-benchmark_label(label), time_label("seconds") {}
+benchmark_label(label), time_label("seconds") {};
 
 /*!
  * \brief Benchmark in minutes.
  */
 template <> inline benchmark<std::chrono::minutes>::benchmark(const std::string& label) :
-benchmark_label(label), time_label("minutes") {}
+benchmark_label(label), time_label("minutes") {};
 
 /*!
  * \brief Benchmark in hours.
  */
 template <> inline benchmark<std::chrono::hours>::benchmark(const std::string& label) :
-benchmark_label(label), time_label("hours") {}
+benchmark_label(label), time_label("hours") {};
 
 }  //  end namespace wtf
 
