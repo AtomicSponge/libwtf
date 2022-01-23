@@ -119,7 +119,9 @@ class diamond_square {
          * Call this after declaring the object to build the actual map.
          */
         void build_map(void) {
-            std::srand(_map_seed);  //  Set seed.
+            std::srand(_map_seed);                     //  Set seed.
+            hmap.clear();                              //  Clear map.
+            hmap.resize((map_side * map_side), 0.0f);  //  Resize and fill.
 
             //  Set the initial values in the four corners of the map.
             //  Also counts as the first square step.
@@ -193,9 +195,6 @@ class diamond_square {
             if(size < min_size) size = min_size;
             if(size > max_size) size = max_size;
             _map_side = pow(2, size) + 1;
-
-            hmap.clear();
-            hmap.resize((map_side * map_side), 0.0f);
         };
 
         /*
