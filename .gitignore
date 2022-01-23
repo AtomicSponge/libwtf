@@ -1,4 +1,6 @@
+.vscode/
 *_bak/
 docs/
+tests/
 wip/
 *.code-workspace
