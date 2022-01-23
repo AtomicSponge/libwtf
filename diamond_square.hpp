@@ -189,7 +189,7 @@ class diamond_square {
                 std::is_same_v<T, float> ||
                 std::is_same_v<T, double> ||
                 std::is_same_v<T, long double>,
-                "Diamond Square Type must be double or long double");
+                "Diamond Square Type must be float, double, or long double");
             if(size < min_size) size = min_size;
             if(size > max_size) size = max_size;
             _map_side = pow(2, size) + 1;
