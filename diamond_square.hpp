@@ -2,7 +2,7 @@
  * Height Map Generator using Diamond Square
  * By:  Matthew Evans
  * File:  diamond_square.hpp
- * Version:  012322 (WIP)
+ * Version:  012322
  *
  * See LICENSE.md for copyright information.
  *
@@ -95,7 +95,7 @@ class diamond_square {
          * \param pos Position to get value for.
          * \return Map value at position.
          */
-        const T operator[](const std::size_t& pos) const { get_value(pos); }
+        //const T operator[](const std::size_t& pos) const { get_value(pos); }
 
         /*!
          * \brief Get a single value in the height map.
@@ -107,14 +107,12 @@ class diamond_square {
             return hmap[pos];
         };
 
-        //!  ...
+        //!  Minimum map size.
         inline static const std::size_t min_size = static_cast<std::size_t>(WTF_DS_MIN_SIZE);
-        //!  ...
+        //!  Maximum map size.
         inline static const std::size_t max_size = static_cast<std::size_t>(WTF_DS_MAX_SIZE);
-        //!  ...
-        const std::size_t& map_side = _map_side;
-        //!  ...
-        const uint32_t& map_seed = _map_seed;
+        const std::size_t& map_side = _map_side;  //!<  Map side value.
+        const uint32_t& map_seed = _map_seed;     //!<  Map seed value.
 
         /*!
          * \brief Build the height map using the power of diamond square!
