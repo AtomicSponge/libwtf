@@ -95,7 +95,10 @@ class diamond_square {
          * \param pos Position to get value for.
          * \return Map value at position.
          */
-        //const T operator[](const std::size_t& pos) const { get_value(pos); }
+        const T operator[](const std::size_t& pos) const {
+            if(pos >= hmap.size()) throw std::out_of_range("Invalid map position.");
+            return hmap[pos];
+        }
 
         /*!
          * \brief Get a single value in the height map.
