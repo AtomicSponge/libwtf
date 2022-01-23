@@ -138,7 +138,7 @@ class diamond_square {
 
             //  Diamond square loop.
             while(step_size > 1) {
-                scale = map_offset * (T)step_size;  //  Adjust randomness per step.
+                scale = map_offset * static_cast<T>(step_size);  //  Adjust randomness per step.
                 half_step = step_size / 2;
 
                 //  Diamond phase.
