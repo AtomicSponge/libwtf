@@ -41,7 +41,7 @@ namespace wtf {
 template <typename T>
 using height_map = std::vector<T>;
 
-template <typename T>
+template <typename T = double>
 /*!
  * \class diamond_square
  * \brief Create a height map using the diamond square algorithm.
