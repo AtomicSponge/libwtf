@@ -45,7 +45,7 @@ template <typename T = double>
 /*!
  * \class diamond_square
  * \brief Create a height map using the diamond square algorithm.
- * \tparam T Height map type - double or long double.
+ * \tparam T Height map type - float, double or long double.
  */
 class diamond_square {
     public:
