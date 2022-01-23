@@ -225,6 +225,6 @@ class diamond_square {
         const uint32_t _map_seed;  //  Seed used for random
 };
 
-}  //  end namespace mte
+}  //  end namespace wtf
 
 #endif
