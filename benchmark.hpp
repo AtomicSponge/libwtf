@@ -42,10 +42,10 @@ class benchmark {
         /*!
          * \brief General initialization, see specializations below.
          */
-        benchmark(const std::string& label) : benchmark_label(label), time_label("units") {};
+        benchmark(const std::string& label) : benchmark_label(label), time_label("nanoseconds") {};
 
-        benchmark() = delete;
-        ~benchmark() = default;
+        benchmark() = delete;    //!<  Delete default constructor.
+        ~benchmark() = default;  //!<  Default destructor.
 
         /*!
          * \brief Start benchmark.
@@ -81,6 +81,17 @@ class benchmark {
         };
 
     private:
+        void verify(void) {
+            static_assert(
+                std::is_same_v<T, std::chrono::nanoseconds> ||
+                std::is_same_v<T, std::chrono::microseconds> ||
+                std::is_same_v<T, std::chrono::milliseconds> ||
+                std::is_same_v<T, std::chrono::seconds> ||
+                std::is_same_v<T, std::chrono::minutes> ||
+                std::is_same_v<T, std::chrono::hours>,
+                "Incorrect benchmark type."
+            );
+        };
         std::mutex bench_mtx;               //  Thread safety for logging
         const std::string benchmark_label;  //  Name of benchmark
         const std::string time_label;       //  Duration type for logging
