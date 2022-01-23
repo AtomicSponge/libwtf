@@ -42,9 +42,7 @@ class benchmark {
         /*!
          * \brief General initialization, see specializations below.
          */
-        benchmark(
-            const std::string& label
-        ) : benchmark_label(label), time_label("units") {};
+        benchmark(const std::string& label) : benchmark_label(label), time_label("units") {};
 
         benchmark() = delete;
         ~benchmark() = default;
@@ -83,9 +81,9 @@ class benchmark {
         };
 
     private:
-        static std::mutex bench_mtx;  //  Thread safety for logging
-        std::string benchmark_label;  //  Name of benchmark
-        std::string time_label;       //  Duration type for logging
+        static std::mutex bench_mtx;        //  Thread safety for logging
+        const std::string benchmark_label;  //  Name of benchmark
+        const std::string time_label;       //  Duration type for logging
         //  Start / end points for benchmark:
         std::chrono::system_clock::time_point start_bench, end_bench;
 };
@@ -131,6 +129,6 @@ benchmark_label(label), time_label("minutes") {}
 template <> inline benchmark<std::chrono::hours>::benchmark(const std::string& label) :
 benchmark_label(label), time_label("hours") {}
 
-}  //  end namespace mte
+}  //  end namespace wtf
 
 #endif
