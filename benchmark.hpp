@@ -42,9 +42,9 @@ class benchmark {
         /*!
          * \brief General initialization, see specializations below.
          */
-        /*inline benchmark(
+        inline benchmark(
             const std::string& label
-        ) : benchmark_label(label), time_label("units") {};*/
+        ) : benchmark_label(label), time_label("units") {};
 
         benchmark() = delete;
         ~benchmark() = default;

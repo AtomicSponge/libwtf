@@ -126,15 +126,15 @@ class diamond_square {
             //  Set the initial values in the four corners of the map.
             //  Also counts as the first square step.
             hmap[0] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
-            hmap[get_side() - 1] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
-            hmap[(get_side() * get_side()) - get_side()] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
-            hmap[(get_side() * get_side()) - 1] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
+            hmap[_map_side - 1] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
+            hmap[(_map_side * _map_side) - _map_side] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
+            hmap[(_map_side * _map_side) - 1] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
 
             std::size_t step_size, half_step;  //  For storing our step sizes.
             T cor1, cor2, cor3, cor4, new_value, scale;  //  For storing our results.
 
             //  Set our step size and start the loop.
-            step_size = get_side() - 1;
+            step_size = _map_side - 1;
 
             //  Diamond square loop.
             while(step_size > 1) {
@@ -142,8 +142,8 @@ class diamond_square {
                 half_step = step_size / 2;
 
                 //  Diamond phase.
-                for(std::size_t y = 0; y < get_side() - 1; y += step_size) {
-                    for(std::size_t x = 0; x < get_side() - 1; x += step_size) {
+                for(std::size_t y = 0; y < _map_side - 1; y += step_size) {
+                    for(std::size_t x = 0; x < _map_side - 1; x += step_size) {
                         //  Get values from the square step.
                         cor1 = get_map_value(x, y);
                         cor2 = get_map_value(x, y + step_size);
@@ -160,8 +160,8 @@ class diamond_square {
                 }
 
                 //  Square phase.
-                for(std::size_t y = 0; y <= get_side() - 1; y += half_step) {
-                    for(std::size_t x = (y + half_step) % step_size; x <= get_side() - 1; x += step_size) {
+                for(std::size_t y = 0; y <= _map_side - 1; y += half_step) {
+                    for(std::size_t x = (y + half_step) % step_size; x <= _map_side - 1; x += step_size) {
                         //  Get values from the diamond step.
                         cor1 = get_map_value(x, y - half_step);
                         cor2 = get_map_value(x + half_step, y);
@@ -204,7 +204,7 @@ class diamond_square {
             const std::size_t& x,
             const std::size_t& y
         ) const {
-            return hmap[(((y + get_side()) % get_side()) * get_side()) + ((x + get_side()) % get_side())];
+            return hmap[(((y + _map_side) % _map_side) * _map_side) + ((x + _map_side) % _map_side)];
         };
 
         void set_map_value(
@@ -212,7 +212,7 @@ class diamond_square {
             const std::size_t& y,
             const T& new_value
         ) {
-            hmap[(((y + get_side()) % get_side()) * get_side()) + ((x + get_side()) % get_side())] = new_value;
+            hmap[(((y + _map_side) % _map_side) * _map_side) + ((x + _map_side) % _map_side)] = new_value;
         };
 
         height_map hmap;           //  Store the height map (vector of Ts)
