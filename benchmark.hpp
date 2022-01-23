@@ -2,7 +2,7 @@
  * Benchmarking Tool
  * By:  Matthew Evans
  * File:  benchmark.hpp
- * Version:  UNTESTED
+ * Version:  012322
  *
  * See LICENSE.md for copyright information.
  *

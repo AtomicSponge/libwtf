@@ -2,7 +2,7 @@
  * Height Map Generator using Diamond Square
  * By:  Matthew Evans
  * File:  diamond_square.hpp
- * Version:  TESTME
+ * Version:  TESTING
  *
  * See LICENSE.md for copyright information.
  *
