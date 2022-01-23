@@ -36,7 +36,7 @@ namespace wtf {
  * \brief Run a benchmark 
  * \tparam T See https://en.cppreference.com/w/cpp/chrono/duration
  */
-template <typename T>
+template <typename T = std::chrono::nanoseconds>
 class benchmark {
     public:
         /*!
@@ -103,12 +103,6 @@ class benchmark {
  * Constructor specializations for different duration types.
  * Depending on the template used, the correct duration type will be displayed in the log.
  */
-
-/*!
- * \brief Benchmark in nanoseconds.
- */
-template <> inline benchmark<std::chrono::nanoseconds>::benchmark(const std::string& label) :
-benchmark_label(label), time_label("nanoseconds") {};
 
 /*!
  * \brief Benchmark in microseconds.
