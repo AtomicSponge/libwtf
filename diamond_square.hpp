@@ -27,7 +27,7 @@
 #endif
 
 #ifndef WTF_DS_MAX_SIZE
-#define WTF_DS_MAX_SIZE (14)
+#define WTF_DS_MAX_SIZE (12)
 #endif
 
 #include <vector>
@@ -51,7 +51,7 @@ class diamond_square {
     public:
         /*!
          * \brief Initialize the diamond square object.
-         * \param factor Factor value to generate map with (2 - 14)
+         * \param factor Factor value to generate map with
          * \param offset Offset value - higher value for more even terrain
          * \param seed Seed for random
          */
@@ -65,7 +65,7 @@ class diamond_square {
 
         /*!
          * \brief Initialize the diamond square object.  Use time as seed.
-         * \param factor Factor value to generate map with (2 - 14)
+         * \param factor Factor value to generate map with
          * \param offset Offset value - higher value for more even terrain
          */
         diamond_square(
