@@ -82,13 +82,7 @@ class diamond_square {
          * \brief Get the height map vector.
          * \return The height map.
          */
-        const height_map<T> operator*() const { return hmap; };
-
-        /*!
-         * \brief Get the height map vector.
-         * \return The height map.
-         */
-        const height_map<T> get_map(void) const { return hmap; };
+        const height_map<T> operator*() const { return _hmap; };
 
         /*!
          * \brief Get a single value in the height map.
@@ -96,9 +90,15 @@ class diamond_square {
          * \return Map value at position.
          */
         const T operator[](const std::size_t& pos) const {
-            if(pos >= hmap.size()) throw std::out_of_range("Invalid map position.");
-            return hmap[pos];
+            if(pos >= _hmap.size()) throw std::out_of_range("Invalid map position.");
+            return _hmap[pos];
         }
+
+        /*!
+         * \brief Get the height map vector.
+         * \return The height map.
+         */
+        const height_map<T> get_map(void) const { return _hmap; };
 
         /*!
          * \brief Get a single value in the height map.
@@ -106,9 +106,21 @@ class diamond_square {
          * \return Map value at position.
          */
         const T get_value(const std::size_t& pos) const {
-            if(pos >= hmap.size()) throw std::out_of_range("Invalid map position.");
-            return hmap[pos];
+            if(pos >= _hmap.size()) throw std::out_of_range("Invalid map position.");
+            return _hmap[pos];
         };
+
+        /*!
+         * \brief Set the map seed.
+         * \param seed New seed value
+         */
+        void set_seed(const uint32_t& seed) { _map_seed = seed; };
+
+        /*!
+         * \brief Set the map offset value.
+         * \param offset New offset value
+         */
+        void set_offset(const T& offset) { _map_offset = offset; };
 
         //!  Minimum map size.
         inline static const std::size_t min_size = static_cast<std::size_t>(WTF_DS_MIN_SIZE);
@@ -116,22 +128,23 @@ class diamond_square {
         inline static const std::size_t max_size = static_cast<std::size_t>(WTF_DS_MAX_SIZE);
         const std::size_t& map_side = _map_side;  //!<  Map side value.
         const uint32_t& map_seed = _map_seed;     //!<  Map seed value.
+        const T& map_offset = _map_offset;        //!<  Map offset value.
 
         /*!
          * \brief Build the height map using the power of diamond square!
          * Call this after declaring the object to build the actual map.
          */
         void build_map(void) {
-            std::srand(_map_seed);                     //  Set seed.
-            hmap.clear();                              //  Clear map.
-            hmap.resize((map_side * map_side), 0.0f);  //  Resize and fill.
+            std::srand(_map_seed);                      //  Set seed.
+            _hmap.clear();                              //  Clear map.
+            _hmap.resize((map_side * map_side), 0.0f);  //  Resize and fill.
 
             //  Set the initial values in the four corners of the map.
             //  Also counts as the first square step.
-            hmap[0] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
-            hmap[map_side - 1] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
-            hmap[(map_side * map_side) - map_side] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
-            hmap[(map_side * map_side) - 1] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
+            _hmap[0] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
+            _hmap[map_side - 1] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
+            _hmap[(map_side * map_side) - map_side] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
+            _hmap[(map_side * map_side) - 1] = (static_cast<T>(rand()) / static_cast<T>(RAND_MAX)) / map_offset;
 
             std::size_t step_size, half_step;  //  For storing our step sizes.
             T cor1, cor2, cor3, cor4, new_value, scale;  //  For storing our results.
@@ -208,7 +221,7 @@ class diamond_square {
             const std::size_t& x,
             const std::size_t& y
         ) const {
-            return hmap[(((y + map_side) % map_side) * map_side) + ((x + map_side) % map_side)];
+            return _hmap[(((y + map_side) % map_side) * map_side) + ((x + map_side) % map_side)];
         };
 
         void set_map_value(
@@ -216,13 +229,13 @@ class diamond_square {
             const std::size_t& y,
             const T& new_value
         ) {
-            hmap[(((y + map_side) % map_side) * map_side) + ((x + map_side) % map_side)] = new_value;
+            _hmap[(((y + map_side) % map_side) * map_side) + ((x + map_side) % map_side)] = new_value;
         };
 
-        height_map<T> hmap;        //  Store the height map (vector of Ts)
-        std::size_t _map_side;     //  Used for width and height of the map
-        const T map_offset;        //  Store the map's offset
-        const uint32_t _map_seed;  //  Seed used for random
+        height_map<T> _hmap;     //  Store the height map (vector of Ts)
+        std::size_t _map_side;  //  Used for width and height of the map
+        T _map_offset;           //  Store the map's offset
+        uint32_t _map_seed;     //  Seed used for random
 };
 
 }  //  end namespace wtf
