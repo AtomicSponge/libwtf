@@ -51,28 +51,28 @@ class diamond_square {
     public:
         /*!
          * \brief Initialize the diamond square object.
-         * \param size Size value to generate map with (2 - 14)
+         * \param factor Factor value to generate map with (2 - 14)
          * \param offset Offset value - higher value for more even terrain
          * \param seed Seed for random
          */
         diamond_square(
-            const std::size_t& size,
+            const std::size_t& factor,
             const T& offset,
             const uint32_t& seed
         ) : map_offset(offset), _map_seed(seed), _map_side(0) {
-            initialize(size);
+            initialize(factor);
         };
 
         /*!
          * \brief Initialize the diamond square object.  Use time as seed.
-         * \param size Size value to generate map with (2 - 14)
+         * \param factor Factor value to generate map with (2 - 14)
          * \param offset Offset value - higher value for more even terrain
          */
         diamond_square(
-            const std::size_t& size,
+            const std::size_t& factor,
             const T& offset
         ) : map_offset(offset), _map_seed(std::time(nullptr)), _map_side(0) {
-            initialize(size);
+            initialize(factor);
         };
 
         diamond_square() = delete;    //!<  Delete default constructor.
@@ -186,18 +186,18 @@ class diamond_square {
     private:
         /*
          * Initialize the object.  Constructors call this.
-         * Verifies the passed size value is within range.
+         * Verifies the passed factor value is within range.
          * Define the height map as map_side * map_side
          */
-        void initialize(std::size_t size) {
+        void initialize(std::size_t factor) {
             static_assert(
                 std::is_same_v<T, float> ||
                 std::is_same_v<T, double> ||
                 std::is_same_v<T, long double>,
                 "Diamond Square Type must be float, double, or long double");
-            if(size < min_size) size = min_size;
-            if(size > max_size) size = max_size;
-            _map_side = pow(2, size) + 1;
+            if(factor < min_size) factor = min_size;
+            if(factor > max_size) factor = max_size;
+            _map_side = pow(2, factor) + 1;
         };
 
         /*
