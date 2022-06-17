@@ -14,7 +14,7 @@ Collection of C++ code snippets, details of each file below.
 
 Clone the repo and run the install:
 ```
-git clone https://github.com/wtfsystems/libwtf.git
+git clone https://github.com/AtomicSponge/libwtf.git
 cd libwtf
 sudo sh install.sh
 ```
